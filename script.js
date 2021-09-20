@@ -7,7 +7,6 @@ let populationField = document.querySelector('.country-population');
 let countryFlag = document.querySelector('.flag-image');
 let cardDiv = document.querySelector('.content');
 
-
 async function getCountryData(countryName){
     try{
         let response = await fetch(`https://restcountries.eu/rest/v2/name/${countryName}`);
@@ -23,20 +22,17 @@ async function getCountryData(countryName){
         capitalField.innerHTML = data.capital
         populationField.innerHTML = data.population
         languagesField.innerText = languages.join(', ')
-        countryFlag.src = data.flag
-
+        countryFlag.src = data.flag;
 
         let neighbourNames = [];
         let neighbourPops = [];
         data.borders.forEach(neighbour => {
             neighbourNames.push()
             
-            
             // let pop = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
             //     // .then(data => console.log(data))
 
             // neighbourPops.push(pop)
-
 
         });
         console.log(data.borders);
@@ -68,7 +64,6 @@ async function getCountryData(countryName){
         console.error(error)
     }
 }
-
 
 // function getCountryPopulation(countryCode){
 //     let pop = fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
