@@ -3,10 +3,15 @@ let formButton = document.querySelector('#submit-button');
 let nameField = document.querySelector('.country-name');
 let capitalField = document.querySelector('.country-capital');
 let languagesField = document.querySelector('.country-languages');
-let countryFlag = document.querySelector('.flag-image')
+let populationField = document.querySelector('.country-population');
+let countryFlag = document.querySelector('.flag-image');
+let cardDiv = document.querySelector('.content');
+let alert = document.querySelector('.wrong-country');
+
 
 async function getCountryData(countryName){
     try{
+        alert.classList.add('invisible')
         let response = await fetch(`https://restcountries.eu/rest/v2/name/${countryName}`);
         let [data] = await response.json();
         console.log(data);
@@ -18,21 +23,19 @@ async function getCountryData(countryName){
 
         nameField.innerHTML = data.name
         capitalField.innerHTML = data.capital
+        populationField.innerHTML = data.population
         languagesField.innerText = languages.join(', ')
-        countryFlag.src = data.flag
-
+        countryFlag.src = data.flag;
 
         let neighbourNames = [];
         let neighbourPops = [];
         data.borders.forEach(neighbour => {
             neighbourNames.push()
             
-            
             // let pop = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
             //     // .then(data => console.log(data))
 
             // neighbourPops.push(pop)
-
 
         });
         console.log(data.borders);
@@ -62,9 +65,9 @@ async function getCountryData(countryName){
         });
     } catch(error){
         console.error(error)
+        alert.classList.remove('invisible')
     }
 }
-
 
 // function getCountryPopulation(countryCode){
 //     let pop = fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
@@ -86,10 +89,8 @@ let asdasdasd =[]
     return data.population
 }
 
-getCountryPopulation('tr')
-    .then(data => console.log(data))
-
-
+// getCountryPopulation('tr')
+//     .then(data => console.log(data))
 
 
 formButton.addEventListener('click', function(){

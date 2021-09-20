@@ -19,25 +19,33 @@
                 <input id="submit-button" type="button" class="btn btn-outline-primary" value="Submit">
             </form>
         </div>
-      </nav>
+    </nav>
 
-    <div class="content">
-        <div class="card">
-            <h3 class="country-name fw-bold">Name: </h3>
-            <h4 class="country-capital">Capital: </h4>
-            <h4 class="country-languages">Languages: </h4>
-            <h4 class="country-population">Population: </h4>
-            <img class="flag-image" src="" alt="sorry no image">
-        </div>
-
-
-        <div class="neighbours">
-            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-        </div>
+    <div class="alert alert-danger alert-dismissible fade show wrong-country invisible" role="alert">
+    <div class='container'>
+        Please type the correct name of the country!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     </div>
 
+    <div class="spacer">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top flag-image" src="" alt="sorry no image">
+            <div class="card card-body">
+                <h3 class="card-title country-name fw-bold">Name: </h3>
+                <h4 class="card-text country-capital">Capital: </h4>
+                <h4 class="card-text country-languages">Languages: </h4>
+                <h4 class="card-text country-population">Population: </h4>
+            </div>
+        </div>
+    </div>
+    
+    <div class="neighbours">
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    </div>
     
     <script src="./script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </div>
 </body>
 </html>
