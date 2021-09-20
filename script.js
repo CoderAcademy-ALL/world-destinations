@@ -8,6 +8,7 @@ let countryFlag = document.querySelector('.flag-image')
 async function getCountryData(countryName){
     try{
         let response = await fetch(`https://restcountries.eu/rest/v2/name/${countryName}`);
+        // let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryName}`);
         let [data] = await response.json();
         console.log(data);
 
@@ -26,13 +27,15 @@ async function getCountryData(countryName){
         let neighbourPops = [];
         data.borders.forEach(neighbour => {
             neighbourNames.push()
+            getCountryPopulation(neighbour)
         })
         console.log(data.borders);
 
 
 
 
-        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+        // var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+        var xValues = data.borders;
         var yValues = [55, 100, 44, 24, 15];
         var barColors = ["red", "green","blue","orange","brown"];
 
@@ -59,6 +62,26 @@ async function getCountryData(countryName){
         console.error('No such country')
     }
 }
+
+
+
+
+
+async function getCountryPopulation(countryCode){
+    try{
+        let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`);
+        let [data] = await response.json();
+        console.log(data.name);
+    } catch(error){
+        console.error('No such country')
+    }
+}
+
+// getCountryPopulation('tur')
+
+
+
+
 
 
 
