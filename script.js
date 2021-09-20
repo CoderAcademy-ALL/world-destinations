@@ -28,8 +28,8 @@ async function getCountryData(countryName){
             neighbourNames.push()
             
             
-            // let pop = getCountryPopulation(neighbour)
-            //     // .then(data => data)
+            // let pop = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
+            //     // .then(data => console.log(data))
 
             // neighbourPops.push(pop)
 
@@ -66,16 +66,28 @@ async function getCountryData(countryName){
 }
 
 
-function getCountryPopulation(countryCode){
-    let pop = fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
-        .then(response => response.json())
-        .then(data => data.population);
-        // .then(data => data.name);
-    return pop
+// function getCountryPopulation(countryCode){
+//     let pop = fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
+//         .then(response => response.json())
+//         .then(data => data.population);
+//         // .then(data => data.name);
+//     return pop
+// }
+
+let asdasdasd =[]
+
+ async function getCountryPopulation(countryCode){
+    let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`);
+    let data = await response.json();
+
+        // .then(response => response.json())
+        // .then(data => data.population);
+        // // .then(data => data.name);
+    return data.population
 }
 
-// getCountryPopulation('aus')
-//     .then(data => console.log(data))
+getCountryPopulation('tr')
+    .then(data => console.log(data))
 
 
 
