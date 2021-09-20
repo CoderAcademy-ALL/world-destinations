@@ -1,3 +1,13 @@
 .flag-image{
     width: 50%;
 }
+
+.content{
+    margin: 10px;
+}
+.navbar{
+    height: py-3;
+}
+.navbar-custom {
+    height: 100px;
+  }
