@@ -3,7 +3,10 @@ let formButton = document.querySelector('#submit-button');
 let nameField = document.querySelector('.country-name');
 let capitalField = document.querySelector('.country-capital');
 let languagesField = document.querySelector('.country-languages');
-let countryFlag = document.querySelector('.flag-image')
+let populationField = document.querySelector('.country-population');
+let countryFlag = document.querySelector('.flag-image');
+let cardDiv = document.querySelector('.content');
+
 
 async function getCountryData(countryName){
     try{
@@ -18,6 +21,7 @@ async function getCountryData(countryName){
 
         nameField.innerHTML = data.name
         capitalField.innerHTML = data.capital
+        populationField.innerHTML = data.population
         languagesField.innerText = languages.join(', ')
         countryFlag.src = data.flag
 
@@ -86,10 +90,8 @@ let asdasdasd =[]
     return data.population
 }
 
-getCountryPopulation('tr')
-    .then(data => console.log(data))
-
-
+// getCountryPopulation('tr')
+//     .then(data => console.log(data))
 
 
 formButton.addEventListener('click', function(){

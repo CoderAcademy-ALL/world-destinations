@@ -1,5 +1,6 @@
 .flag-image{
-    width: 50%;
+    /* width: 500px;
+    height: 500px; */
 }
 
 .content{
@@ -10,5 +11,8 @@
 }
 .navbar-custom {
     height: 100px;
-  }
+}
  
+.invisible{
+    display: none;
+}
