@@ -8,7 +8,6 @@ let countryFlag = document.querySelector('.flag-image')
 async function getCountryData(countryName){
     try{
         let response = await fetch(`https://restcountries.eu/rest/v2/name/${countryName}`);
-        // let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryName}`);
         let [data] = await response.json();
         console.log(data);
 
@@ -27,17 +26,22 @@ async function getCountryData(countryName){
         let neighbourPops = [];
         data.borders.forEach(neighbour => {
             neighbourNames.push()
-            getCountryPopulation(neighbour)
-        })
+            
+            
+            // let pop = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
+            //     // .then(data => console.log(data))
+
+            // neighbourPops.push(pop)
+
+
+        });
         console.log(data.borders);
+        console.log(neighbourPops.length);
 
-
-
-
-        // var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
         var xValues = data.borders;
-        var yValues = [55, 100, 44, 24, 15];
-        var barColors = ["red", "green","blue","orange","brown"];
+        var yValues = [13,42,46,52,13,43,67,34,12,23];
+        // var yValues = neighbourPops;
+        var barColors = ["red", "green","blue","orange","brown","orange","orange"];
 
         new Chart("myChart", {
         type: "bar",
@@ -52,35 +56,38 @@ async function getCountryData(countryName){
             legend: {display: false},
             title: {
             display: true,
-            text: "World Wine Production 2018"
+            text: "Bordering Countries of " + data.name
             }
         }
         });
-
-
     } catch(error){
-        console.error('No such country')
+        console.error(error)
     }
 }
 
 
+// function getCountryPopulation(countryCode){
+//     let pop = fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
+//         .then(response => response.json())
+//         .then(data => data.population);
+//         // .then(data => data.name);
+//     return pop
+// }
 
+let asdasdasd =[]
 
+ async function getCountryPopulation(countryCode){
+    let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`);
+    let data = await response.json();
 
-async function getCountryPopulation(countryCode){
-    try{
-        let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`);
-        let [data] = await response.json();
-        console.log(data.name);
-    } catch(error){
-        console.error('No such country')
-    }
+        // .then(response => response.json())
+        // .then(data => data.population);
+        // // .then(data => data.name);
+    return data.population
 }
 
-// getCountryPopulation('tur')
-
-
-
+getCountryPopulation('tr')
+    .then(data => console.log(data))
 
 
 
@@ -90,29 +97,3 @@ formButton.addEventListener('click', function(){
 
     getCountryData(countryName)
 });
-
-
-
-
-
-// var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-// var yValues = [55, 100, 44, 24, 15];
-// var barColors = ["red", "green","blue","orange","brown"];
-
-// new Chart("myChart", {
-//   type: "bar",
-//   data: {
-//     labels: xValues,
-//     datasets: [{
-//       backgroundColor: barColors,
-//       data: yValues
-//     }]
-//   },
-//   options: {
-//     legend: {display: false},
-//     title: {
-//       display: true,
-//       text: "World Wine Production 2018"
-//     }
-//   }
-// });
