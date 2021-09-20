@@ -7,6 +7,7 @@ let populationField = document.querySelector('.country-population');
 let countryFlag = document.querySelector('.flag-image');
 let cardDiv = document.querySelector('.content');
 let alert = document.querySelector('.wrong-country');
+let space = document.querySelector('.spacer')
 
 // let countryOut;
 
@@ -84,6 +85,7 @@ getCountryPopulation('arm')
 formButton.addEventListener('click', function(){
     let countryName = formInput.value;
     getCountryData(countryName)
+    space.style.display = 'block';
 });
 
 
