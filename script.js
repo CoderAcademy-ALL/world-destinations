@@ -6,9 +6,12 @@ let languagesField = document.querySelector('.country-languages');
 let populationField = document.querySelector('.country-population');
 let countryFlag = document.querySelector('.flag-image');
 let cardDiv = document.querySelector('.content');
+let alert = document.querySelector('.wrong-country');
+
 
 async function getCountryData(countryName){
     try{
+        alert.classList.add('invisible')
         let response = await fetch(`https://restcountries.eu/rest/v2/name/${countryName}`);
         let [data] = await response.json();
         console.log(data);
@@ -62,6 +65,7 @@ async function getCountryData(countryName){
         });
     } catch(error){
         console.error(error)
+        alert.classList.remove('invisible')
     }
 }
 

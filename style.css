@@ -1,5 +1,3 @@
-
-
 .content{
     margin: 10px;
 }
@@ -16,17 +14,22 @@
 }
 
 .spacer{
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 .card{
     margin: auto;
     text-align: center;
-    border: none;
+    /* border: none; */
+    /* border-radius: 200px; */
 }
 
 canvas{
     margin: auto;
     margin-bottom: 100px;
+}
+
+.wrong-country{
+    text-align: center;
 }
