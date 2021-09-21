@@ -1,3 +1,4 @@
+// DOM elements
 let formInput = document.querySelector('.form-input');
 let formButton = document.querySelector('#submit-button');
 let nameField = document.querySelector('.country-name');
@@ -10,22 +11,24 @@ let alert = document.querySelector('.wrong-country');
 let space = document.querySelector('.spacer')
 let welcome = document.querySelector('.welcome')
 
-// let countryOut;
-
+// Asynchronous function that displays country values with data from an API
 async function getCountryData(countryName){
     try{
+        // hide content for opening of the project
         alert.classList.add('invisible')
+        
+        // receive data using the fetch API
         let response = await fetch(`https://restcountries.eu/rest/v2/name/${countryName}`);
         let [data] = await response.json();
         console.log(data);
 
-        // countryOut = data
-
+        // get languages spoken in the country and put them in an array
         let languages = [];
         data.languages.forEach(language => {
             languages.push(language.name);
         });
 
+        // insert country data into elements
         nameField.innerHTML = data.name
         capitalField.innerHTML = data.capital
         populationField.innerHTML = data.population
@@ -42,11 +45,11 @@ async function getCountryData(countryName){
         console.log(data.borders);
         console.log(neighbourPops);
 
+        // Neighbour Chart - display the bordering countries of the country on a chart
         var xValues = data.borders;
         var yValues = [13,42,46,52,13,43,67,34,12,23];
         // var yValues = neighbourPops;
         var barColors = ["red", "green","blue","orange","brown","orange","orange"];
-
         new Chart("myChart", {
         type: "bar",
         data: {
@@ -63,26 +66,27 @@ async function getCountryData(countryName){
             text: "Bordering Countries of " + data.name
             }
         }
-        });
+        })
     } catch(error){
         console.error(error)
+        
+        // If there are any errors caught, display a bootstrap alert!
         alert.classList.remove('invisible')
     }
 }
 
+// A function that gets the population of a country from the api
 function getCountryPopulation(countryCode){
     let pop = fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`)
         .then(response => response.json())
         .then(data => data.population);
-        // .then(data => data.name);
     return pop
 }
-
+// testing out the function above to see what is produces
 getCountryPopulation('arm')
     .then(data => console.log(data))
 
-
-
+// Search button functioning on button click
 formButton.addEventListener('click', function(){
     let countryName = formInput.value;
     if (countryName){
